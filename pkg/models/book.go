@@ -43,3 +43,22 @@ func DeleteBook(ID int64) Book {
 	db.Where("ID=?", ID).Delete(book)
 	return book
 }
+
+func UpdateBook(ID int64, updatedBook Book) Book {
+	db.Model(&Book{}).Where("id = ?", ID).Updates(updatedBook)
+
+	// db.Save(book)
+	// book, _ := GetBookById(ID)
+	// res, _ := json.Marshal(book)
+	// fmt.Println(string(res))
+
+	// createdAt := book.CreatedAt
+	// updatedAt := book.UpdatedAt
+	// book = updatedBook
+	// book.CreatedAt = createdAt
+	// book.UpdatedAt = updatedAt
+	// fmt.Println(book)
+	// db.Save(book)
+
+	return updatedBook
+}
